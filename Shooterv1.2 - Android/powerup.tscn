@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/icons-pow-up.png" type="Texture" id=1]
+[ext_resource path="res://scripts/powerup.gd" type="Script" id=2]
+[ext_resource path="res://sounds/Flashpoint001d.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 27.8622
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.133333, 0.281481, 0.42963, 0.585185, 0.703704, 0.814815, 0.911111, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.703125, 0, 1, 0.59375, 1, 0, 1, 0, 1, 0.296875, 1, 0, 1, 0.953125, 1, 0.214286, 0.373884, 1, 1, 0.992188, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.76
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 0.6
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 32.19
+color_ramp = SubResource( 3 )
+
+[node name="powerup" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 79, 220, 60, 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+shape = SubResource( 1 )
+
+[node name="blink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="expl" type="Particles2D" parent="."]
+emitting = false
+amount = 200
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.86
+process_material = SubResource( 4 )
+[connection signal="body_entered" from="." to="." method="_on_powerup_body_entered"]

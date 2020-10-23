@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cosmic-tone.ogg-8019bac0005b03aaf2bfc97b781a737c.oggstr"
+
+[deps]
+
+source_file="res://music/cosmic-tone.ogg"
+dest_files=[ "res://.import/cosmic-tone.ogg-8019bac0005b03aaf2bfc97b781a737c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

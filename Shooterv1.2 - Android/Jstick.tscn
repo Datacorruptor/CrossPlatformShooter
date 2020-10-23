@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/SmallHandleFilledGrey.png" type="Texture" id=1]
+[ext_resource path="res://sprites/SmallHandleFilled.png" type="Texture" id=2]
+[ext_resource path="res://sprites/JoystickPack.png" type="Texture" id=3]
+[ext_resource path="res://JButton.gd" type="Script" id=4]
+
+[node name="Jstick" type="Sprite"]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 52, 38, 300, 300 )
+
+[node name="JButton" type="TouchScreenButton" parent="."]
+position = Vector2( -50, -50 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 1 )
+script = ExtResource( 4 )
